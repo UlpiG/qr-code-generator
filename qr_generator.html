@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { padding: 10px; width: 80%; max-width: 300px; margin-bottom: 10px; }
+        button { padding: 10px; cursor: pointer; }
+        #qrcode { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>QR-Code Generator</h2>
+    <input type="text" id="qrText" placeholder="Text oder URL eingeben">
+    <button onclick="generateQR()">QR-Code erstellen</button>
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQR() {
+            let text = document.getElementById("qrText").value;
+            document.getElementById("qrcode").innerHTML = "";
+            if (text.trim() !== "") {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: text,
+                    width: 200,
+                    height: 200
+                });
+            } else {
+                alert("Bitte einen Text oder eine URL eingeben.");
+            }
+        }
+    </script>
+
+</body>
+</html>
